@@ -58,8 +58,8 @@ experiment_with_min_ns = function(args, expname, shifted) {
 }
 
 experiment_with_b = function(args, expname, shifted) {
-  experiment_y(args, expname, 'b-600', 4, stopControl = logRSMStop(b = 600), shifted, optWeights = 'univ')
-  experiment_y(args, expname, 'b-600', 4, stopControl = logRSMStop(b = 600), shifted, optWeights = 't')
+  experiment_y(args, expname, 'b-600', 4, stopControl = logRSMStop(B = 600), shifted, optWeights = 'univ')
+  experiment_y(args, expname, 'b-600', 4, stopControl = logRSMStop(B = 600), shifted, optWeights = 't')
 }
 
 experiment_all_with_min_ns = function() {
