@@ -48,21 +48,34 @@ subexperiment_y = function(args, expname, stopDesc, i, subsets, stopControl, shi
 }
 
 experiment_y = function(args, expname, stopDesc, subsets, stopControl, shifted, optWeights) {
-  for (i in 1:1) {
+  for (i in 1:100) {
     subexperiment_y(args, expname, stopDesc, i, subsets, stopControl, shifted, optWeights)
   }
 }
 
-experiment_with_min_ns = function(args, stopDesc, shifted) {
-  experiment_y(args, 'min_ns-30', stopDesc, 4, stopControl = logRSMStop(min_ns = 30), shifted, optWeights = 'NONE')
+experiment_with_min_ns = function(args, expname, shifted) {
+  experiment_y(args, expname, 'min_ns-30', 4, stopControl = logRSMStop(min_ns = 30), shifted, optWeights = 'NONE')
+}
+
+experiment_with_b = function(args, expname, shifted) {
+  experiment_y(args, expname, 'b-600', 4, stopControl = logRSMStop(b = 600), shifted, optWeights = 'univ')
+  experiment_y(args, expname, 'b-600', 4, stopControl = logRSMStop(b = 600), shifted, optWeights = 't')
 }
 
 experiment_all_with_min_ns = function() {
-  experiment_with_min_ns(c(0.7, 0.5), '07_05', 2)
   experiment_with_min_ns(c(0.7, 0.5), '07_05', 2)
   experiment_with_min_ns(c(0.5, 0.3), '05_03', 2)
   experiment_with_min_ns(c(0.7, 0.6, 0.5), '07_06_05', 3)
   experiment_with_min_ns(c(0.5, 0.4, 0.3), '05_04_03', 3)
   experiment_with_min_ns(c(0.7, 0.6, 0.5, 0.4, 0.3), '07_06_05_04_03', 5)
   experiment_with_min_ns(c(0.7, 0.6, 0.5, 0.4, 0.3, 0.2), '07_06_05_04_03_02', 6)
+}
+
+experiment_all_with_b = function() {
+  experiment_with_b(c(0.7, 0.5), '07_05', 2)
+  experiment_with_b(c(0.5, 0.3), '05_03', 2)
+  experiment_with_b(c(0.7, 0.6, 0.5), '07_06_05', 3)
+  experiment_with_b(c(0.5, 0.4, 0.3), '05_04_03', 3)
+  experiment_with_b(c(0.7, 0.6, 0.5, 0.4, 0.3), '07_06_05_04_03', 5)
+  experiment_with_b(c(0.7, 0.6, 0.5, 0.4, 0.3, 0.2), '07_06_05_04_03_02', 6)
 }
