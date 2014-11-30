@@ -67,7 +67,7 @@ spec <- matrix(c(
   'subset',       's', 1, 'integer',    'size of subset (required)',
   'iterations',   'b', 1, 'integer',    'number of iterations (required)',
   'significant',  'g', 1, 'integer',    'number of significant variables',
-  'weights',      'w', 1, 'character',  'weights (possible values: none, t, cor, univ)',
+  'weights',      'w', 1, 'character',  'weights (possible values: none, t, univ)',
   'help',         'h', 0, 'logical',    'this help'
 ),ncol=5,byrow=T)
 
@@ -79,8 +79,8 @@ docli = function () {
     q(status=1)
   }
 
-  if (!is.element(opt$weights, c('none', 'cor', 't', 'univ'))) {
-    cat(paste('unsupported weight calculation:', paste(opt$weights, ',', sep = ''), 'possible values: none, t, cor, univ'))
+  if (!is.element(opt$weights, c('none', 't', 'univ'))) {
+    cat(paste('unsupported weight calculation:', paste(opt$weights, ',', sep = ''), 'possible values: none, t, univ'))
     q(status=1)
   }
 
