@@ -12,12 +12,9 @@ subexperiment_y = function(args, expname, stopDesc, i, subsets, stopControl, shi
   if (optWeights == 't') {
     myweights = calculate_weigths_with_t(class, data)
     fileName = paste(expname, '_t_', sep = '')
-  } else if (optWeights == 'cor') {
-    myweights = calculate_weigths_with_cor(class, data)
-    fileName = paste(expname, '_cor_', sep = '')
   } else if (optWeights == 'univ') {
     myweights = calculate_weigths_with_univ(class, data)
-    fileName = paste(expname, '_cor_', sep = '')
+    fileName = paste(expname, '_univ_', sep = '')
   } else {
     myweights = NULL
     fileName = paste(expname, '_nw_', sep = '')
